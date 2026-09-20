@@ -1,0 +1,19 @@
+PERBAIKAN PENTING
+==================
+Model saved_model/efficientnetb0.keras memiliki preprocessing internal:
+Rescaling(1/255) -> Normalization -> Rescaling.
+
+Karena itu predict.py HARUS mengirim piksel 0..255.
+Versi sebelumnya melakukan /255 sebelum model dan itu menyebabkan
+double-rescaling. Versi ini sudah diperbaiki.
+
+Urutan label:
+0 Antracnose
+1 Culvaria
+2 Dryness
+3 Fungal Disease
+4 Magnesium Deficiency
+5 Serangan Apogonia
+
+Jangan mengganti hasil prediksi model dengan penyakit yang dipilih user.
+Pilihan penyakit hanya boleh digunakan untuk verifikasi kecocokan.
